@@ -20,6 +20,15 @@ class IndicationControllerSpec extends Specification implements ControllerUnitTe
         model.indicationInstanceCount == 3
     }
 
+    void "Test the index action returns the correct model when no data exists"() {
+        when: "The index action is executed"
+        controller.index()
+
+        then: "The model is correct"
+        !model.indicationList
+        model.indicationInstanceCount == 0
+    }
+
     Class[] getDomainClassesToMock() {
         Indication
     }
